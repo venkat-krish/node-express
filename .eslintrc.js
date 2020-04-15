@@ -4,6 +4,9 @@ module.exports = {
     es6: true,
   },
   extends: "eslint:recommended",
+  rules: {
+    "comma-dangle": 0,
+  },
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
