@@ -7,6 +7,10 @@ module.exports = {
   rules: {
     "comma-dangle": 0,
   },
+  env: {
+    node: true,
+    mocha: true,
+  },
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
@@ -15,5 +19,4 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  rules: {},
 };
