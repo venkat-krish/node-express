@@ -4,7 +4,14 @@ const app = express();
 const bodyParser = require("body-parser");
 const port = process.env.port || 3000;
 
-const db = mongoose.connect("mongodb://localhost/bookAPI", {
+let conn_str = "mongodb://localhost/bookAPI_Prod";
+
+if (process.env.ENV === "Test") {
+  conn_str = "mongodb://localhost/bookAPI_Test";
+  console.log("Test environment");
+}
+
+const db = mongoose.connect(conn_str, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -23,6 +30,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to my Nodemon API");
 });
 
-app.listen(port, () => {
+app.server = app.listen(port, () => {
   console.log(`Running on the port ${port}`);
 });
+
+module.exports = app;
