@@ -27,7 +27,15 @@ function bookController(Book) {
         return res.send(err);
       }
 
-      return res.json(books);
+      // Hypermedia Links
+      const returnBooks = books.map((book) => {
+        const newBook = book.toJSON();
+        newBook.links = {};
+        newBook.links.self = `http://${req.headers.host}/api/books/${book._id}`;
+        return newBook;
+      });
+
+      return res.json(returnBooks);
     });
   }
 

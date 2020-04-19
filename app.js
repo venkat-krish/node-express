@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const port = process.env.port || 3000;
 
-let conn_str = "mongodb://localhost/bookAPI_Prod";
+let conn_str = "mongodb://localhost/bookAPI";
 
 if (process.env.ENV === "Test") {
   conn_str = "mongodb://localhost/bookAPI_Test";
